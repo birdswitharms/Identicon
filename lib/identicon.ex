@@ -1,18 +1,14 @@
 defmodule Identicon do
   @moduledoc """
-  Documentation for Identicon.
+  Identicon takes a string and generates a 5x5 grid Icon based on that string.
   """
+  def main(input_string) do
+    input_string
+    |> hash_input
+  end
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Identicon.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def hash_input(input_string) do
+    :crypto.hash(:md5, input_string)
+    |> :binary.bin_to_list
   end
 end
