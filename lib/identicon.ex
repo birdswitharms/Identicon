@@ -8,10 +8,8 @@ defmodule Identicon do
     |> pick_color
   end
 
-  def pick_color(image_struct) do
-    %Identicon.Image{hex: [r, g, b | _]} = image_struct
-
-    [r, g, b]
+  def pick_color(%Identicon.Image{hex: [r, g, b | _]} = image_struct) do
+    %Identicon.Image{image_struct | color: {r, g, b}}
   end
 
   def hash_input(input_string) do
